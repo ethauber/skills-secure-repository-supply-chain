@@ -92,8 +92,11 @@ jobs:
           file: exercise-toolkit/markdown-templates/step-feedback/step-results-table.md
           vars: |
             step_number: 2
-            package_json_check_passed: "${{ steps.check-package-json.outcome == 'success' }}"
-            package_lock_check_passed: "${{ steps.check-package-lock-json.outcome == 'success' }}"
+            results_table:
+              - description: "Checked for updated minimist version in package.json"
+                passed: ${{ steps.check-package-json.outcome == 'success' }}
+              - description: "Checked for updated minimist version in package-lock.json"
+                passed: ${{ steps.check-package-lock-json.outcome == 'success' }}
 
       # END: Check practical exercise
 
